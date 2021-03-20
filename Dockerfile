@@ -17,4 +17,4 @@ USER 1001
 
 ENTRYPOINT ["sh", "-c"]
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
