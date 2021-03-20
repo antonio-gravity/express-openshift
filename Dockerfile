@@ -9,8 +9,12 @@ COPY ./public ./public
 COPY ./src ./src
 COPY ./bin ./bin
 COPY package.json package.json
-RUN /bin/bash -c 'npm install -p'
+
+ENV NODE_ENV=production
+RUN npm install --production
 
 USER 1001
+
+ENTRYPOINT ["sh", "-c"]
 
 CMD ["npm", "start"]
