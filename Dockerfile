@@ -1,4 +1,4 @@
-FROM node:14.15.4
+FROM node:12.14-alpine
 
 USER root
 
@@ -10,5 +10,7 @@ COPY ./src ./src
 COPY ./bin ./bin
 COPY package.json package.json
 RUN /bin/bash -c 'npm install -p'
+
+USER 1001
 
 CMD ["npm", "start"]
