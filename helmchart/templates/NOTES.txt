@@ -1,0 +1,8 @@
+{{- if .Values.route.enabled }}
+This application has a route enabled in the following endpoint:
+{{- if .Values.route.name }}
+  https://{{ .Values.route.name }}.{{ .Values.route.domain }}{{ .Values.contextPath | default "/" }}
+{{- else }}
+  https://{{ .Release.Name }}-{{ .Release.Namespace }}.{{ .Values.route.domain }}{{ .Values.contextPath | default "/" }}
+{{- end }}
+{{- end }}

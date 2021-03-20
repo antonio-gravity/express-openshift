@@ -1,0 +1,90 @@
+# Default values for the application.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+contextPath: /horus-bff
+
+image:
+  repository: cepsaregistry.jfrog.io/dsi-docker-unstable/express-openshift
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets:
+  - name: cepsaregistry
+nameOverride: ""
+fullnameOverride: ""
+
+sectext:
+  enabled: false
+  secretName: sectext
+
+loggingLevel: debug
+
+secretEnvironmentVars:
+  DATABASE_URL: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  {}
+# fsGroup: 2000
+
+securityContext:
+  {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+# runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8000
+
+route:
+  enabled: true
+  domain: "apps.pre.cepsacorp.es"
+  name: express
+
+resources:
+  {}
+  # limits:
+  #   cpu: 500m
+  #   memory: 500Mi
+  # requests:
+  #   cpu: 200m
+#   memory: 250Mi
+
+livenessProbe:
+  initialDelaySeconds: 60
+  periodSeconds: 30
+
+readinessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

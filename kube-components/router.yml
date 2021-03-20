@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: static-web
+  namespace: myproject
+spec:
+  to:
+    kind: Service
+    name: static-web
+    weight: 100
