@@ -7,3 +7,9 @@ Password: <any value>
 
 To login as administrator:
 oc login -u system:admin
+
+
+## Helm
+```
+helm install express-openshift .
+```
